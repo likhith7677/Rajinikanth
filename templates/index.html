@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Superstar Rajinikanth</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(to right, #1f1c2c, #928dab);
+            color: white;
+            text-align: center;
+            padding: 40px;
+            animation: fadeIn 2s ease-in;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        img {
+            width: 250px;
+            border-radius: 20px;
+            box-shadow: 0 0 20px #fff;
+            margin-top: 20px;
+            transition: transform 0.5s ease;
+            animation: popIn 1.5s ease;
+        }
+
+        img:hover {
+            transform: scale(1.05);
+        }
+
+        @keyframes popIn {
+            0% { opacity: 0; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        h1 {
+            font-size: 48px;
+            margin-top: 20px;
+            animation: slideIn 1s ease;
+        }
+
+        @keyframes slideIn {
+            0% { opacity: 0; transform: translateY(-40px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .quote {
+            font-style: italic;
+            font-size: 22px;
+            margin: 20px;
+            animation: fadeIn 2s ease;
+        }
+
+        .bio-box {
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 20px;
+            padding: 25px;
+            margin: 40px auto;
+            max-width: 900px;
+            text-align: left;
+            animation: fadeIn 2s ease;
+        }
+
+        h2 {
+            color: #ffd700;
+        }
+
+        ul {
+            text-align: left;
+        }
+
+        button {
+            background: #e50914;
+            color: white;
+            padding: 12px 25px;
+            font-size: 20px;
+            border: none;
+            border-radius: 10px;
+            margin: 10px;
+            cursor: pointer;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        button:hover {
+            background: #b00610;
+            transform: scale(1.1);
+        }
+
+        video {
+            margin-top: 40px;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(255,255,255,0.2);
+            animation: fadeIn 2s ease;
+        }
+    </style>
+</head>
+<body>
+    <h1>Superstar Rajinikanth</h1>
+    <img src="{{ url_for('static', filename='ss.jpg') }}" alt="Rajinikanth">
+    <div class="quote">"I’m not a superstar. I’m an employee of my fans."</div>
+
+    <audio id="audio" src="{{ url_for('static', filename='last_but_not_least.mp3') }}"></audio>
+    <button onclick="playAudio()">🎧 Play Rajini Quote</button>
+    <button onclick="stopAudio()">⏹️ Stop Quote</button>
+
+    <script>
+        const audio = document.getElementById('audio');
+
+        function playAudio() {
+            audio.play();
+        }
+
+        function stopAudio() {
+            audio.pause();
+            audio.currentTime = 0;
+        }
+    </script>
+
+    <div class="bio-box">
+        <h2>Biography</h2>
+        <p>
+            Shivaji Rao Gaekwad, known as Rajinikanth, was born on December 12, 1950. From being a humble bus conductor in Bangalore,
+            he rose to become India's biggest cinematic icon. His screen presence, punch dialogues, and humble nature made him a living legend.
+        </p>
+        <p>
+            Rajinikanth has acted in over 160 films across Tamil, Hindi, Telugu, and Kannada. His life is an inspiring story of
+            determination and self-belief, making him a symbol of hope and charisma.
+        </p>
+
+        <h2>Achievements</h2>
+        <ul>
+            <li><strong>Padma Bhushan (2000)</strong> – India's third-highest civilian award</li>
+            <li><strong>Padma Vibhushan (2016)</strong> – India's second-highest civilian award</li>
+            <li><strong>Dadasaheb Phalke Award (2021)</strong> – India's highest film honor</li>
+            <li><strong>State Awards</strong> – Multiple Best Actor awards from Tamil Nadu government</li>
+            <li><strong>International Fame</strong> – Iconic fan base in Japan and worldwide</li>
+        </ul>
+    </div>
+
+    <h2 style="margin-top: 50px;">Watch the Superstar in Action</h2>
+    <video width="560" height="315" controls>
+        <source src="{{ url_for('static', filename='rajinisir.mp4') }}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</body>
+</html>
